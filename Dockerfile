@@ -13,7 +13,7 @@ RUN apk add --no-cache ca-certificates openssl && \
     apk del openssl
 
 ADD entry-consul.sh /bin
-ADD consul.tpl.json /
+ADD consul.tpl.json /consul.tpl.json
 ADD telegraf.conf /etc/telegraf/telegraf.conf
 
 ENTRYPOINT [ "entry-consul.sh" ]
