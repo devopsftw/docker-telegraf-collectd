@@ -1,10 +1,13 @@
 {
-  "data_dir": "/tmp/consul",
-  "datacenter": "${CONSUL_DC}",
-  "services": [
-      {
-          "name" : "${CONSUL_SERVICE_NAME}",
-          "port" : 8125
-      }
-  ]
+    "data_dir": "/tmp/consul",
+    "datacenter": "${CONSUL_DC}",
+    "ports": {
+        "dns": -1
+    },
+    "services": [
+        {
+            "name": "${CONSUL_SERVICE_NAME}",
+            "port": 8125
+        }
+    ]
 }

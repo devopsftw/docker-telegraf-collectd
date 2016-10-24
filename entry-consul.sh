@@ -1,12 +1,5 @@
 #!/bin/sh
 
-_term() {
-    kill -INT $pid
-    wait $pid
-}
-# trap term for gracefully stopping consul
-trap _term TERM
-
 # join listed consul hosts
 if [ -z $CONSUL_HOST ]; then
     echo "CONSUL_HOST is empty"
@@ -25,8 +18,6 @@ if [ $ret != 0 ]; then
     echo "envplate failed, some env vars not set"
     exit 1
 fi
-/usr/local/bin/consul agent -config-file /etc/consul.json $JOIN_STR
-pid=$!
-wait $pid
+/usr/local/bin/consul agent -config-file /etc/consul.json $JOIN_STR &
 
-source /entrypoint.sh
+exec /entrypoint.sh "$@"

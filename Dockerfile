@@ -17,3 +17,4 @@ ADD consul.tpl.json /etc
 ADD telegraf.conf /etc/telegraf/telegraf.conf
 
 ENTRYPOINT [ "entry-consul.sh" ]
+CMD [ "telegraf" ]
